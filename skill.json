@@ -1,0 +1,72 @@
+{
+  "name": "genpark-agentic-commerce-b2b-vendor-scorecard-sla-adjudicator-skill",
+  "version": "1.0.0",
+  "title": "B2B Vendor Scorecard & On-Time In-Full (OTIF) SLA Adjudicator Skill",
+  "description": "On-Time In-Full (OTIF) score, defect PPM penalty tiers, lead-time variance credit, and dynamic vendor qualification tiering. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "agentic-commerce",
+  "topics": [
+    "otif",
+    "vendor-scorecard",
+    "sla-penalties",
+    "procurement-audit",
+    "agentic-commerce",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "compute_vendor_otif_compliance_score",
+      "description": "Calculate On-Time In-Full (OTIF) percentage and supplier defect Parts-Per-Million (PPM).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "units_ordered": {
+            "type": "integer"
+          },
+          "units_delivered": {
+            "type": "integer"
+          },
+          "promised_delivery_epoch": {
+            "type": "integer"
+          },
+          "actual_delivery_epoch": {
+            "type": "integer"
+          },
+          "defect_count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "units_ordered",
+          "units_delivered",
+          "promised_delivery_epoch",
+          "actual_delivery_epoch"
+        ]
+      }
+    },
+    {
+      "name": "adjudicate_contractual_sla_financial_penalty",
+      "description": "Adjudicate SLA liquid damages penalty for PO breach under standard master purchasing agreement.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "contract_value_usd": {
+            "type": "number"
+          },
+          "otif_score_pct": {
+            "type": "number"
+          },
+          "defect_ppm": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "contract_value_usd",
+          "otif_score_pct"
+        ]
+      }
+    }
+  ]
+}
